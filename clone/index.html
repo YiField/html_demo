@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<script src="index.js"></script>
+	<script type="text/javascript">
+
+		function deepClone (obj) {
+			if (typeof obj !== 'object') {
+				return obj;
+			}
+			if (!obj) { // obj 是 null的情况
+				return obj;
+			}
+			if (obj instanceof  Date) {
+				return new Date(obj);
+			} 
+			if (obj instanceof  RegExp) {
+				return new RegExp(obj);
+			} 
+			if (obj instanceof Function) {
+				return obj;
+			} 
+			let newObj;
+			if (obj instanceof Array) {
+				newObj = [];
+				for(let i = 0, len = obj.length; i < len; i++){
+		               newObj.push(deepClone(obj[i]));
+		         }
+		         return newObj;
+			}
+			newObj = {};
+			for(let key in obj) {
+				if (obj.hasOwnProperty(key)) {
+					if (typeof obj[key] !== 'object') {
+						newObj[key] = obj[key];
+					} else {
+						newObj[key] = deepClone(obj[key]);
+					}
+				
+			}
+		}
+			return newObj;
+		}
+
+	</script>
+
+</body>
+</html>

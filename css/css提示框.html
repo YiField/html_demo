@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        a.tooltip{
+            position: relative;
+        }
+        a.tooltip span{
+            display: none;
+            padding: 5px;
+            width: 200px;
+        }
+        a.hover {
+            background: #fff;
+        }
+        a.tooltip:hover span{
+            display: inline;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <a href="#" class="tooltip">链接文字
+        <span>提示文字</span>
+    </a>
+</body>
+</html>

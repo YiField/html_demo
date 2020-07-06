@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+  function create_boxes()
+  {
+    //get value from input tag
+    var dom=document.getElementById("no_of_boxes");
+    var len=dom.value;
+    //create dom and appendto between createbox button and calculatesum button
+    var parent=document.getElementById("list_body");
+    for(var i=0;i<len;i++){
+	    var box=document.createElement('div');
+	    box.innerHTML=i;
+	    // box.value=i;
+	    box.style.border="1px solid #000";
+	    box.style.width="200px"
+	    parent.appendChild(box);
+	    // parent.appendChild(document.createElement("br"))
+
+    }
+  }
+  function calculate_sum()
+  {
+    
+  	var dom=document.getElementById("list_body");
+  	var sum=0;
+  	for(var i=0;i<dom.children.length;i++){
+  		sum+=parseInt(dom.children[i].innerHTML)
+  	}
+  	window.alert(sum)
+
+
+
+
+  }
+</script>
+
+<input type="text" id="no_of_boxes" value="5" maxlength="1" />
+<input type="button" onclick="create_boxes()" value="Create Boxes" />
+<div id="list_body">
+</div>
+<input type="button" onclick="calculate_sum()" value="Calculate Sum" />
+
+</body>
+</html>
+</html>

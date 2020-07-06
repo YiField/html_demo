@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<script type="text/javascript">
+		let ob1 = new Object();
+		ob1.name = "lala";
+
+		let ob2 = new Object();
+		ob2.name = "lala";
+
+
+		//不同之处：
+		+0 === -0//true
+		NaN === NaN//false
+		Object.is(+0, -0)//false
+		Object.is(NaN, NaN)//true
+
+		Object.defineProperty(Object, 'is', {
+		  value: function(x, y) {
+		    if (x === y) {
+		      // 针对+0 不等于 -0的情况
+		      return x !== 0 || 1 / x === 1 / y;
+		    }
+		    // 针对NaN的情况
+		    return x !== x && y !== y;
+		  },
+		  configurable: true,
+		  enumerable: false,
+		  writable: true
+		});
+
+		const target = { a: 1, b: 1 };
+
+		const source1 = { b: 2, c: 2 };
+		const source2 = { c: 3 };
+		const source3 = { e:'sss' };
+
+		Object.assign(target, source1, source2, source3);
+		target // {a:1, b:2, c:3}
+
+		
+	</script>
+
+</body>
+</html>

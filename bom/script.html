@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	var name="the window";
+	var object={
+		name:'myobject',
+		getNameFunc:function(){
+			var that=this;
+			return function(){
+				return that.name;
+			}
+		}
+	}
+
+
+     var x = 1;
+     var obj = {
+       x: 2,
+       fun: function () {
+         var x = 3;
+         return this.x;
+       }
+     };
+     var fun = obj.fun;
+     console.log( obj.fun(), fun() );
+     var color="red"
+     var o={color:'blue'};
+    function saycolor(){
+    	console.log(this.color)
+    }
+    o.saycolor=saycolor;
+
+</script>
+</body>
+</html>

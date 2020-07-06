@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	// 工厂模式，抽象了创建具体对象的过程，用函数封装以特定接口创建对象的细节，无法解决对象识别问题--Object
+	function createPerson(name,age,job){
+		var o=new Object();
+		o.name=name;
+		o.age=age;
+		o.job=job;
+		// console.log('createPerson',this)//window
+		o.sayName=function(){
+			// console.log('sayName',this)//o
+			console.log(this.name);
+		}
+		return o;
+	}
+	var p1=createPerson('a',10,'doctor');
+
+	// 构造函数模式
+	// 特点：
+	// 可识别对象类型instanceof constructor
+	// 构造函数当可以当函数使用，扩展作用域
+	// 构造函数存在的问题：
+	// 每个方法都要在每个实例上重新创建一遍，导致不同作用域和标识符解析
+	function Person(name,age,job){
+		this.name=name;
+		this.age=age;
+		this.job=job;
+		this.sayName=function(){
+			console.log(this.name)
+		}
+	}
+	var p2=new Person('p2',12,'teacher');
+	//当成函数调用
+	 var p3=new Object();
+	 Person.call(p3,'p3',13,'enmm');
+	 p3.sayName();
+
+	 //p3.sayName==p4.sayName==>false
+
+	 // 将函数定义在外部解决构造函数的问题，无封装性可言
+	 function Person2(name,age,job){
+	 	this.name=name;
+		this.age=age;
+		this.job=job;
+		this.sayName=sayName;
+	 }
+	 function sayName(){
+	 	console.log(this.name)
+	 }
+
+	 // 原型模式,prototype指针--》对象
+
+	 function Person3(){
+
+	 }
+	 Person3.prototype.name="prototype";
+	 Person3.prototype.job="dd";
+	 Person3.prototype.age=2;
+	 Person3.prototype.sayName = function() {
+	 	// body...
+	 	console.log(this.name)
+	 };
+	 var p4=new Person3();
+	 var p5=new Person3();
+	 p4.name='shili';
+
+	 // 检查属性在实例或者原型
+	 p4.hasOwnProperty('name');
+
+	//for -in枚举对象属性（能被访问的)无论在实例还是原型中
+	console.log('name' in p4)
+	//hasprototypeProperty实例中有：false,否则true
+	hasprototypeProperty(p4,'name')//false
+	hasprototypeProperty(p5,'name')//true
+
+	//Object.keys(Person.prototype)
+
+</script>
+</body>
+</html>

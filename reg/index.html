@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	var str = "http://www.runoob.com:80/html/html-tutorial.html";
+	var patt1 = /(\w+):\/\/([^/:]+)(:\d*)?([^# ]*)/;
+	arr = str.match(patt1);
+	for (var i = 0; i < arr.length ; i++) {
+	    console.log(arr[i])
+	}
+
+	var str2='{123}.{321}';
+	var patt2=/(^{$})/
+	var result=str2.match(patt2)
+</script>
+</body>
+</html>

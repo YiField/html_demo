@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="format-detection" content="telephone=no,email=no" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0" id="view">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: helvetica;
+            margin: 0;
+        }
+
+        body * {
+            -webkit-user-select: none;
+            -webkit-text-size-adjust: 100%;
+            -webkit-text-size-adjust: 100%;
+        }
+        a, button, input {
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
+        }
+        button, input {
+            -webkit-appearance: none;
+            border-radius: 0;
+        }
+
+        input::-webkit-input-placeholder {
+            color: #000;
+        }
+        input:focus::-webkit-input-placeholder {
+            color: #f00;
+        }
+        div {
+            width: 75px;
+            height: 100px;
+            float: left;
+        }
+        div:nth-child(1) {
+            background: #f00;
+        }
+        div:nth-child(2) {
+            background: #ff0;
+        }
+        div:nth-child(3) {
+            background: #f0f;
+        }
+        div:nth-child(4) {
+            background: #0ff;
+        } 
+        div:nth-child(5) {
+            background: #0f0;
+        }
+    </style>
+    <script>
+        (function () {
+            /* 获取 css 像素 (viewport没有缩放, initial-scale=1.0)*/
+            var curWidth = document.documentElement.clientWidth
+            var curWidth = window.innerWidth
+            var curWidth = window.screen.width
+            /* 以上三种方式都可以准确的获取到 html 的 width */
+            var targetWidth = 375 // 目标值
+            var scale = curWidth / targetWidth
+            var meta = document.getElementById('view')
+            var content = 'initial-scale=' + scale + ', user-scalable=no, maximum-scalable=' + scale + ', minimum-scalable=' + scale
+            meta.content = content
+        })()
+    </script>
+</head>
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+</body>
+</html>

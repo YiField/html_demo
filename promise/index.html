@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	console.log(1);
+	new Promise(function (resolve, reject){
+	reject();
+	resolve();
+	}).then(function(){
+	console.log(2);
+	}, function(){
+	console.log(3);
+	});
+	console.log(4);
+
+	// 二者并存的情况下，在数值运算中，优先调用了valueOf，字符串运算中，优先调用了toString。而’ '+bbb是字符串操作，为啥也是调用valueOf，那是因为，存在操作符，valueOf的优先级高于toString。
+	var bbb = {
+	i: 10,
+	toString: function() {
+	console.log('toString');
+	return this.i;
+	},
+	valueOf: function() {
+	console.log('valueOf');
+	return this.i;
+	}
+	}
+	console.log(bbb);// 10 toString
+	console.log(+bbb); // 10 valueOf
+	console.log(''+bbb); // 10 valueOf
+	console.log(String(bbb)); // 10 toString
+	console.log(Number(bbb)); // 10 valueOf
+	console.log(bbb == '10'); // true valueOf
+
+	console.log('箭头函数的this')
+	name='dfs';
+	// 箭头函数没有自己的this也并不能使用call,apply以及bind去绑定this，会选择去继承父级作用域的this
+	var fun2 = () => {
+    return () => {
+        return () => {
+            return () => {
+                console.log(this.name);
+            }
+        }
+    }
+}
+// fun2.call({ name: 'name' })()()(); 
+	var fun= () => {
+		return function(){
+			return function(){
+				return function(){
+                console.log(this.name);
+
+				}
+			}
+		}
+	}
+var f = fun.call({name: 'foo'})
+var t1 = f.call({name: 'bar'})()()
+var t2 = f().call({name: 'baz'})()
+var t3 = f()().call({name: 'qux'})
+</script>
+</body>
+</html>

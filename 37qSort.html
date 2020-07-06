@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	
+	function qSort(qrr,startIdx,endIdx){
+		var check=arr[startIdx];
+		var i=startIdx;
+		var j=endIdx;
+		if(i>=j)return;
+		while(i<j){
+			while(i<j&&arr[j]>check){
+				j--;
+			}
+			while(i<j&&(arr[i]<check||arr[i]==arr[j])){
+				i++;
+			}
+			if(i!=j){
+
+
+			var temp=arr[i];
+			arr[i]=arr[j];
+			arr[j]=temp;
+			}
+		}
+		// arr[startIdx]=arr[i];
+		// arr[i]=check;
+		// qSort(arr,startIdx,i-1);
+		// qSort(arr,i+1,endIdx)
+		//add code
+		arr[startIdx]=arr[i];
+		arr[i]=check;
+
+		qSort(arr,startIdx,i-1);
+		qSort(arr,i+1,endIdx);
+
+		return arr;
+	}
+	var arr = [3,3,-5,6,0,2,-1,-1,3];
+</script>
+</body>
+</html>

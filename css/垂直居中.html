@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<style type="text/css">
+	.big{
+		position: relative;
+		height: 100px;
+		background:red;
+	}
+	.small{
+		position: absolute;
+		top: 50%;
+		height: 40px;
+		margin-top: -20px;
+		background: blue;
+		width:100%;
+	}
+	.flexcontainer{
+		display: flex;
+		align-items: center;
+		height: 100px;
+		background: yellow;
+	}
+	.flexobject{
+		width:100%;
+		display: flex;
+		justify-content: center;
+		height: 50px;
+		background: red;
+	}
+	.nofloatbig{
+		height: 100px;
+		background: pink;
+	}
+	.nofloatsmall{
+		height: 10px;
+		background: purple;
+	}
+	.gridbig{
+		display: grid;
+		width: 200px;
+		height: 200px;
+		border: 1px solid;
+		justify-items: center;
+		align-items: center;
+	}
+	.gridsmall{
+		width: 100%;
+		background: yellow;
+		height: 50%;
+	}
+	.transformbig{
+		position: relative;
+		width: 200px;
+		height: 200px;
+        border: 1px solid;
+	}
+	.transformsmall{
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		margin: 0; /* 绝对定位是margin相对于边框内壁的偏移，所以要将margin为0 */
+		background: gold;
+		width:100%;
+		height: 20px;
+	}
+	a.tooltip {position: relative}
+	a.tooltip span{display:none; padding:5px; width:200px;}
+	a::hover {background:#fff;} /*background-color is a must for IE6*/
+	a.tooltip:hover span{display:inline; position:absolute;}
+</style>
+<body>
+	<h1>使用绝对定位子元素top:50%,margin-top:自身高度的一半</h1>
+<div class="big">
+	<div class="small"></div>
+</div>
+<br>
+	<h1>使用绝对定位子元素top:50%,transform</h1>
+<div class="transformbig">
+	<div class="transformsmall"></div>
+</div>
+<br>
+	<h1>使用flex布局</h1>
+	<div class="flexcontainer">
+		<div class="flexobject"></div>
+	</div>
+	<br>
+	<h1>无浮动布局</h1>
+	<p>无浮动的布局，子元素默认高度0，宽度为父元素100%</p>
+	<div class="nofloatbig">
+		<div class="nofloatsmall"></div>
+	</div>
+	<br>
+	<h1>使用grid布局</h1>
+	<div class="gridbig">
+		<div class="gridsmall">sss</div>
+	</div>
+	<a class="tooltip" href="#">链接文字 <span>提示文字</span></a>
+</body>
+</html>

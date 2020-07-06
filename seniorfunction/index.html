@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	
+	function isArray(value){
+		return Objet.prototype.toString.call(value) == '[Object Array]';
+	}
+
+	function isFunction(value){
+		return Object.prototype.toString.call(value)=='[Object Function]'
+	}
+
+	function isRegExp(value){
+		return Object.prototype.toString.call(value)=='[Object RegExp]'
+	}
+
+	function Person(name){
+		if(this instanceof Person){
+			this.name=name;
+		}else{
+			return new Person(name);
+		}
+	}
+	let p1=new Person('p1');
+	console.log(window.name,p1.name)
+	let p2=Person('p2');
+	console.log(p2.name);
+	//继承可能会被破坏，使用原型链和寄生组合可解决这个问题
+	function Polygon(sides){
+		if(this instanceof of Polygon){
+			this.sides=sides;
+			this.getArea=function(){
+				return 0;
+			}
+		}else{
+			return new Polygon(sides);
+		}
+	}
+
+	function Rectangle(width,height){
+		Polygon.call(this,2);
+		this.width=width;
+		this.height=height;
+		this.getArea=function(){
+			return this.width*this.height;
+		}
+	}
+	Rectangle.prototype=new Polygon();
+	let rect=new Rectangle(5,10);
+	console.log(rect.sides)
+
+	// 函数柯里化
+	// 将返回的函数进行排序。
+	function curry(fn){
+		var args=Array.prototype.slice.call(arguments,1);
+		// arguments并非数组，可通过下标获取参数，无slice方法
+		return function(){
+			var innerArgs=Array.prototype.slice.call(arguments);
+			var finalArgs=args.concat(innerArgs);
+			return fn.apply(null,finalArgs);//执行环境可能被破坏null
+		}
+	}
+
+	//绑定给定环境
+	function bind(fn,context){
+		var args=Array.prototype.slice.call(arguments,2);
+		return function(){
+			var innerArgs=Array.prototype.slice.call(arguments);
+			var finalArgs=args.concat(innerArgs);
+			return fn.apply(context,finalArgs);
+		}
+	}
+	//保证在下一次定时器代码执行之前，至少要等到指定的间隔
+	setTimeout(function(){
+		//处理代码
+		setTimeout(arguments.callee,interval);
+	},interval);
+
+	// 基本模式
+	setTimeout(function(){
+		var item=array.shift();
+		process(item);
+		if(array.length>0){
+			setTimeout(arguments.callee,100)
+		}
+	},100);
+
+	function chunk(array,process,context){
+		setTimeout(function(){
+			var item=array.shift();
+			process.call(context,item);
+			if(array.length>0){
+				setTimeout(arguments.callee,100)
+			}
+		},100)
+	}
+
+	// 函数字节流
+	var processor={
+		timeroutId:null,
+		performProcessing:function(){
+			//实际执行的代码
+		},
+		process:function(){
+			clearTimeout(this.timeroutId);
+			var that=this;
+			this.timeroutId=setTimeout(function(){
+				that.performProcessing();
+			},100)
+		}
+
+	}
+	//执行
+	process.process();
+
+	//简化
+	function throttle(method,context){
+		clearTimeout(method.tId);
+		method.tId=setTimeout(function(){
+			method.call(context);
+		},100)
+	}
+	//可引用语window.onresize时更改大量dom元素样式
+
+	//自定义事件--创建一个管理事件的对象，让其他对象监听那些事件。
+
+	function EventTarget(){
+		this.handlers={}
+	}
+	EventTarget.prototype={
+		constructor:EventTarget,
+		addHandler:function(type,handler){
+			if(typeof this.handlers[type]=='undefined'){
+				this.handlers[type]=[];
+			}
+			this.handlers[type].push(handler);
+		},
+		fire:function(event){
+			if(!event.target){
+				event.target=this;
+			}
+			if(this.handlers[event.type] instanceof Array){
+				var handlers=this.handlers[event.type];
+				for(var i=0,len=handlers.length;i<len;i++){
+					handlers[i](event);
+				}
+			}
+		},
+		removeHandler:function(type,handler){
+			if(this.handlers[type] instanceof Array){
+				for(var i=0，len=handlers.length;i<len;i++){
+					if(handlers[i]==handler){
+						break;
+					}
+				}
+				handlers.splice(i,1);
+			}
+		}
+	}
+
+</script>
+</body>
+</html>

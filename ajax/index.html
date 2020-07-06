@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	function createXHR(){
+		let xhr;
+		if(typeof XMLHttpRequest){
+			xhr=new XMLHttpRequest();
+		}else{
+			xhr=new ActiveXObject("Microsoft.XMLHTTP");
+		}
+		return xhr;
+	}
+	let xhr=createXHR();
+	xhr.open("get","url",true);//method,url,async:true异步
+	xhr.send("content");//用于post请求
+</script>
+</body>
+</html>

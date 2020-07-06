@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	
+	var person=new Object();
+	var person1={
+		name:'hh',
+		age:29
+	}
+	var arr=[1,2,3];
+	function setArr(arr){
+		arr=[];
+
+	}
+	function outer(){
+		inner();
+	}
+	function inner(){
+		console.log(inner.caller)
+	}
+
+</script>
+</body>
+</html>

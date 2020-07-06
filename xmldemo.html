@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<form id="user-info">
+		 <!-- action="/upload" enctype="multipart/form-data" method="post" -->
+
+    Username: <input type="text" name="username">
+
+    Password: <input type="password" name="password">
+
+    File: <input type="file" name="file">
+
+<ul>
+	<li>
+		<input type="radio" name="color" value="red">red
+	</li>
+	<li>
+		<input type="radio" name="color" value="green">green
+	</li>	
+	<li>
+		<input type="radio" name="color" value="yellow">yellow
+	</li>
+</ul>
+    <input type="submit" onclick="clickButton">
+
+</form>
+
+<script type="text/javascript">
+	//xml对象的创建
+    // var xmldom= document.implementation.createDocument("","root",null);
+    // console.log(xmldom.documentElement.tagName);
+
+    // var child=xmldom.createElement("child");
+    // xmldom.documentElement.appendChild(child);
+
+    //domParser类型
+    // var parser=new DOMParser();
+    // var xmldom = parser.parseFromString("<root><child>/<root>","text/html");
+    // console.log(xmldom.documentElement.tagName);
+    // console.log(xmldom.documentElement.namespaceURI)
+    // console.log(xmldom.documentElement.firstChild.tagName);
+    // console.log(xmldom.documentElement.lastChild);
+    // console.log(xmldom.documentElement.children.length);
+    // //创建child
+    // var child=xmldom.createElement("child");
+    // xmldom.documentElement.appendChild(child);
+    // console.log(xmldom.documentElement.children.length);
+    // console.log(xmldom.getElementsByTagName("child"))
+    
+    // console.log('-------');
+    // var errxml=parser.parseFromString("<root><asd<asd","text/html");
+    // console.log(errxml)
+
+    // var parser=new DOMParser(),
+    // xmldom,
+    // errors;
+    // try{
+    //     xmldom = parser.parseFromString("<root>","text/html");
+    //     errors=xmldom.getElementsByTagName("parsererror");
+    //     if(errors.length>0){
+    //         throw new Error("parser error");
+    //     }
+    // }catch(ex){
+    //     console.log("parser erroe")
+    // }
+
+    //xml
+    // console.log("xml序列化为dom")
+    // var serilizer=new XMLSerializer();
+    // var xml=serilizer.serializeToString(xmldom);
+    // console.log(xml)
+    
+    // xpath
+    // var supportsXPath=document.implementation.hasFeature("XPath","3.0");
+    
+</script>
+<script src="xhr.js"></script>
+</body>
+</html>

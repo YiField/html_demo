@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 参数的默认值 
+        function log(x,y){
+            // y = y || 'word';//y=false时，转为默认值
+            if(typeof y === 'undefined'){
+                y = 'word'
+            }
+            console.log(x,y);
+        }
+        log('hello ')
+        log('hello','china')
+        log('hello','')
+        console.log('----------')
+        //es6
+        function log2(x, y ='word'){
+            console.log(x,y);
+        }
+        log2('hello')
+
+        
+    </script>
+</body>
+</html>

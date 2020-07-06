@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	
+	// function createBox(){
+	// 	var o=new Object();
+	// 	o.width=100;
+	// 	o.height=100;
+	// 	o.color="red";
+	// 	o.text="haha";
+	// 	o.getDate=function(){
+	// 		console.log('width:'+o.width);
+	// 		console.log('height:'+o.height);
+	// 		console.log('color:'+o.color);
+	// 		console.log('text:'+o.text);
+
+	// 	}
+	// }
+
+	function qSort(arr,startI,endI){
+		var check=arr[startI];
+		var i=startI;
+		var j=endI;
+		while(i<j){
+			while(i<j&&arr[j]>check){
+				j--;
+			}
+			while(i<j&&(arr[i]<check||arr[i]==arr[j])){
+				i++;
+			}
+			var temp=arr[i];
+			arr[i]=arr[j];
+			arr[j]=temp;
+
+		}
+
+		//add code
+		arr[startI], arr[j] = arr[j], arr[startI];
+		qSort(arr, startI, j-1);
+		qSort(arr, i, endI);
+		// arr.sort((a,b)=>{return b-a})
+		return arr;
+	}
+	var arr=[31,2,5,4,7,9]
+</script>
+</body>
+</html>

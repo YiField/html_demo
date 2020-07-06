@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	// 不存在变量的提升
+	// {
+	// 	let a=10;
+	// 	let b=1;
+	// }
+	// console.log(a,b);
+	function add([x,y]){
+		return x+y;
+	}
+	console.log(add([1,2]))
+	let [b,c]=[1,2,3];
+	function f2(x,y){
+		return {x,y}
+	}
+	// [1,2].map()
+	[[1,2],[3,4]].map(([a,b])=>a+b);
+	// function move({x=0,y=0}={}){
+	// 	return [x,y]
+	// }
+	function move({x,y}={x:0,y:0}){
+		return [x,y]
+	}
+	move({x:3})
+	console.log(move({x:3}))
+	// (function (){
+	// 	if(false){
+	// 		function f(){console.log('i am inside')}
+	// 	}
+	// 	f();
+	// }());
+	// function f(){console.log('i am outside')}
+
+	if(true){
+		console.log(typeof lala);
+		// let lala;
+	}
+	var a = [];
+	for (var i = 0; i < 10; i++) {
+	  a[i] = function () {
+	  	var index=i;
+	  	return function(){
+	    console.log(index);
+
+	  	}
+	  }();
+	}
+	a[6](); // 10
+
+	function f1(arr){
+		// arr=[];
+		arr.length=0;
+	}
+	var arr=[1,2,3];
+
+	if(true){
+		let color='letcolor'
+	}
+	if(true){
+		var color2='varclolr'
+	}
+
+	var value='25';
+	var number=Number(value);
+	console.log(number)
+
+	// for (let i = 0; i < 3; i++) {
+	//   let i = 'abc';
+	//   console.log(i);
+	// }
+	// function f() { console.log('I am outside!'); }
+
+	// (function () {
+	//   if (false) {
+	//     // 重复声明一次函数f
+	//     function f() { console.log('I am inside!'); }
+	//   }
+
+	//   f();
+	// }());
+	// if(true){
+	// 	let ha=5;
+	// 	console.log(ha)
+	// }
+	// console.log('outside:'+ha)
+	// const foo=Object.freeze({ha:'sdf',2:3})
+
+	function test(){
+		var n=4399;
+	
+	function add(){
+		n++;
+		console.log(n)
+	}
+	return{n:n,add:add}
+}
+var result=test();
+var result2=test();
+result.add();
+result.add();
+console.log(result.n);
+result2.add();
+</script>
+</body>
+</html>
