@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		body {
+		  background: #FFFAD5;
+		  color: #BD4932;
+		  display: table;
+		  width: 100%;
+		}
+
+		.main {
+		  height: 100%;
+		}
+
+		.footer {
+		  display: table-row;
+		  height:1px;
+		  background: #105B63;
+		  color: #FFFAD5;
+		}
+
+		/*====== Ignore section below ======*/
+
+		@orange: #BD4932;
+		@yellow: #FFD34E;
+		@green: #105B63;
+		@beige: #FFFAD5;
+
+
+		/* Basic Style*/
+		* { margin:0; padding:0;}
+		html, body { height: 100%; }
+		button { padding: 5px 10px;position:absolute;top: 20px;right:20px;display: block; -webkit-appearance: none;background: @orange; outline: none;  border: 2px solid #DB9E36; color: @yellow; border-radius: 10px; box-shadow: 0 2px 3px rgba(0,0,0,0.5);cursor: pointer;}
+		button:active {border-color: @beige; color:@beige;}
+
+		.button2 { top: 60px;}
+	</style>
+</head>
+<body>
+	<button class="button1">添加内容到主体区域</button>
+	<button class="button2">添加内容到底部</button>
+	<div class="main">这里是主体区域</div>
+	<div class="footer">这里是底部</div>
+	<script type="text/javascript">
+		document.querySelector(".button1").addEventListener("click", function(){
+	    var element = document.createElement("div");
+	    	element.innerHTML = "<p>额外添加的行</p><p>额外添加的行</p><p>额外添加的行</p>";
+	  		document.querySelector(".main").appendChild(element);
+		});
+		document.querySelector(".button2").addEventListener("click", function(){
+		    var element = document.createElement("div");
+		    element.innerHTML = "<p>额外添加到底部的行</p><p>额外添加到底部的行</p><p>额外添加到底部的行</p>";
+		  document.querySelector(".footer").appendChild(element);
+		});
+	</script>
+</body>
+</html>
