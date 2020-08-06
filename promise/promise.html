@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<script type="text/javascript">
+		(function (window) {
+			/*
+				Promise构造函数
+				executor：执行器函数
+				*/
+			function Promise(executor){
+
+			}
+
+			// 向外暴露promise
+			window.Promise = Promise;
+		})();
+		Promise.prototype.then = function(onResolved, onRejected) {
+			// body...
+		};
+
+		/*
+			Promise原型对象的.catch
+			制定一个失败的回调函数
+			返回一个新的promise对象
+		*/
+		Promise.prototype.catch = function (onRejected) {
+			// body...
+		}
+
+		/*
+			Promise函数对象的resolve方法
+			返回一个指定结果的promise对象
+		*/
+		Promise.resolve = function(value) {
+
+		}
+
+		/*
+			Promise函数对象的reject方法
+			返回一个指定的reason的失败状态的promise对象
+		*/
+		Promise.reject = function (value) {
+			// body...
+		}
+		/*
+	    Promise函数对象的all方法
+	    返回一个promise对象，只有当所有promise都成功时返回的promise状态才成功
+	    */
+	    Promise.all = function(value){
+
+	    }
+
+	    /*
+	    Promise函数对象的race方法
+	    返回一个promise对象，状态由第一个完成的promise决定
+	    */
+	    Promise.race = function(value){
+
+	    }
+	</script>
+</body>
+</html>

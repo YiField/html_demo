@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+	.demo {
+		width: 300px;
+		background: #60f;
+		padding: 3px 0;
+	}
+	.box {
+	  	width: 100%;
+		background: #f60;
+		height: 50px;
+		padding: 10px;
+		border: 5px solid green;
+	}
+	.search-box .search-input {
+		border: 1px solid #E5E5E5;
+	    border-radius:15px;
+	    width: 30px;
+	    height: 30px;
+	    padding-left: 31px;
+	    margin-left: 20px;
+	    box-sizing: border-box;
+	    background: url(../img/ic_selete_search.png) no-repeat 50% 50%;
+	    background-size: 16px 16px;
+	    transition: all 0.2s linear;
+	}
+	.search-input:hover {
+		width: 304px;
+		height: 34px;
+		background-position: 3% 50%;
+	}
+	.search-input .depart-info {
+		position: absolute;
+		top: 19px;
+		right: 48px;
+		transition: all 0.2s linear;
+	}
+	
+	</style>
+</head>
+<body>
+	<div class="demo">
+		<div class="box"></div>
+	</div>
+	<div class="search-box">
+        <input type="text" class="search-input f-r" placeholder="请输入部门名称" v-model="search" />
+        <span class='depart-info'>部门主管：{{admin}} ｜ 部门人数：{{sum}}人</span>
+        <span class='depart-info'>公司人数：{{sum}}人</span>
+     </div>
+</body>
+</html>

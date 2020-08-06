@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+	<title></title>
+	<style type="text/css">
+		.main {
+			position: relative;
+			overflow: hidden;
+			height: 500px;
+		}
+		#canvas {
+			position: absolute;
+			left: 0;
+			top: 0;
+			/*z-index: 999;*/
+		}
+		#video {
+			position: absolute;
+			left: 0;
+			top: 0;
+		}
+	</style>
+</head>
+<body>
+	<div class="wrap">
+		<h1>听妈妈的话-周杰伦</h1>
+		<div class="main">
+			<canvas id="canvas"></canvas>
+			<video src="./video/听妈妈的话MV.mp4" controls width="720" height="480" id="video" ></video>
+		</div>
+		<div class="content">
+			<input type="text" name="" id="text">
+			<input type="button" name="" id="btn" value="发弹幕">
+			<input type="color" name="">
+			<input type="range" name="" id="range" max="40" min="20">
+		</div>
+	</div>
+	<script type="text/javascript" src="./index.js"></script>
+</body>
+</html>
