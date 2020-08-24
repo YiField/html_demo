@@ -10,6 +10,7 @@ let video = doc.getElementById("video");
 let $txt = doc.getElementById("text");
 let $color = doc.getElementById('color')
 let $range = doc.getElementById('range');
+let $btn = doc.getElementById('btn')
 
 
 class CanvasBarrage {
@@ -82,6 +83,23 @@ class CanvasBarrage {
 			}
 		})
 	}
+
+	add(obj) {
+		this.barrages.push(new Barrage(obj, this));
+	}
+
+	replay() {
+		this.clear();
+		let time = this.video.currentTime;
+		this.barrages.forEach(barrage => {
+			barrage.flag = false;
+			if(time <= barrage.time) {
+				barrage.isInit = false;
+			}else {
+				barrage.flag = true;
+			}
+		})
+	}
 }
 
 class Barrage {
@@ -129,10 +147,47 @@ class Barrage {
 		this.context.ctx.fillStyle = this.color;
 		this.context.ctx.fillText(this.value, this.x, this.y)
 	}
+
 }
 let canvasBarrage = new CanvasBarrage(canvas, video, {data})
 video.addEventListener('play',()=>{
 	canvasBarrage.isPaused = false;
 	canvasBarrage.render();
 })
+
+video.addEventListener('pause',() => {
+	canvasBarrage.isPaused = true;
+})
+
+video.addEventListener('seeked', () => {
+	canvasBarrage.replay();
+})
+
+function send() {
+	let value = $txt.value;
+	let time = video.currentTime;
+	let color = $color.value;
+	let fontSize = $range.value;
+	let obj = {
+		value,
+		time,
+		color,
+		fontSize
+	};
+	canvasBarrage.add(obj);
+	$txt.value = '';
+}
+
+$btn.addEventListener('click',send);
+
+$txt.addEventListener('keyup',e => {
+	let key = e.keyCode;
+	key === 13 && send();
+})
+
+
+
+
+
+
 
