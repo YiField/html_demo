@@ -18,6 +18,6 @@
   "license": "ISC",
   "dependencies": {
     "vue": "^2.6.11",
-    "vue-loader": "^15.9.1"
+    "vue-loader": "^17.0.1"
   }
 }
